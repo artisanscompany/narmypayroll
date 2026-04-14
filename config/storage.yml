@@ -8,11 +8,11 @@ local:
 
 minio:
   service: S3
-  access_key_id: <%= ENV.fetch("ACTIVE_STORAGE_ACCESS_KEY_ID") %>
-  secret_access_key: <%= ENV.fetch("ACTIVE_STORAGE_SECRET_ACCESS_KEY") %>
+  access_key_id: <%= ENV["ACTIVE_STORAGE_ACCESS_KEY_ID"] %>
+  secret_access_key: <%= ENV["ACTIVE_STORAGE_SECRET_ACCESS_KEY"] %>
   region: <%= ENV.fetch("ACTIVE_STORAGE_REGION", "us-east-1") %>
-  bucket: <%= ENV.fetch("ACTIVE_STORAGE_BUCKET") %>
-  endpoint: <%= ENV.fetch("ACTIVE_STORAGE_ENDPOINT") %>
+  bucket: <%= ENV["ACTIVE_STORAGE_BUCKET"] %>
+  endpoint: <%= ENV["ACTIVE_STORAGE_ENDPOINT"] %>
   force_path_style: true
   ssl_verify_peer: false
 
