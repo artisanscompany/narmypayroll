@@ -51,12 +51,10 @@ jobs:
     steps:
       - name: Trigger Coolify deployment
         env:
-          COOLIFY_URL: ${{ secrets.COOLIFY_URL }}
           COOLIFY_DEPLOY_TOKEN: ${{ secrets.COOLIFY_DEPLOY_TOKEN }}
-          COOLIFY_APP_UUID: ${{ secrets.COOLIFY_APP_UUID }}
         run: |
           curl --fail --silent --show-error \
+            --url "https://mserver.gitgar.com/api/v1/deploy?uuid=bgyb9zzcwbiqwzwpscyexwud" \
             -X POST \
             -H "Authorization: Bearer ${COOLIFY_DEPLOY_TOKEN}" \
-            -H "Accept: application/json" \
-            "${COOLIFY_URL}/api/v1/deploy?uuid=${COOLIFY_APP_UUID}"
+            -H "Accept: application/json"
