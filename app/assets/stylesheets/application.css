@@ -1,0 +1,205 @@
+:root {
+  color-scheme: light;
+  --paper: #f7f3ea;
+  --ink: #112235;
+  --ink-muted: #4f5f73;
+  --line: rgba(17, 34, 53, 0.14);
+  --sand: #ded3bf;
+  --olive: #6d7b46;
+  --olive-deep: #394623;
+  --card: rgba(255, 255, 255, 0.72);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(109, 123, 70, 0.22), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(57, 70, 35, 0.18), transparent 28%),
+    linear-gradient(160deg, #faf7ef 0%, var(--paper) 48%, #efe5d4 100%);
+}
+
+a {
+  color: inherit;
+}
+
+.shell {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 3rem 0 4rem;
+}
+
+.hero,
+.status-card,
+.note {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--card);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 50px rgba(17, 34, 53, 0.08);
+}
+
+.hero {
+  padding: 2.5rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--olive-deep);
+}
+
+.hero h1,
+.notes h2,
+.status-card h2 {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.hero h1 {
+  font-size: clamp(2.8rem, 9vw, 5.6rem);
+  line-height: 0.94;
+  max-width: 8ch;
+}
+
+.lede,
+.status-card p,
+.note p {
+  color: var(--ink-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.lede {
+  max-width: 42rem;
+  margin: 1.2rem 0 0;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+}
+
+.button,
+.meta-pill,
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.8rem 1.05rem;
+  font-size: 0.92rem;
+}
+
+.button {
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.button-primary {
+  background: linear-gradient(135deg, var(--olive) 0%, var(--olive-deep) 100%);
+  color: white;
+}
+
+.meta-pill {
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.status-grid,
+.metric-grid,
+.notes {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.metric-grid,
+.status-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.notes {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.status-card,
+.metric-card,
+.note {
+  padding: 1.4rem;
+}
+
+.metric-card strong {
+  display: block;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1;
+}
+
+.metric-card span {
+  display: block;
+  margin-top: 0.55rem;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+
+.status-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.status-card p,
+.note p {
+  margin: 0.9rem 0 0;
+}
+
+.status-badge {
+  text-transform: capitalize;
+  border: 1px solid var(--line);
+}
+
+.status-connected {
+  background: rgba(109, 123, 70, 0.14);
+  color: var(--olive-deep);
+}
+
+.status-unavailable {
+  background: rgba(162, 67, 51, 0.12);
+  color: #7a2518;
+}
+
+@media (max-width: 640px) {
+  .shell {
+    width: min(100% - 1rem, 1100px);
+    padding-top: 1rem;
+  }
+
+  .hero,
+  .metric-card,
+  .status-card,
+  .note {
+    border-radius: 22px;
+  }
+
+  .hero {
+    padding: 1.5rem;
+  }
+
+  .status-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
