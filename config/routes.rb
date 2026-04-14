@@ -10,4 +10,11 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   root "home#index"
+  get "login", to: "home#login"
+  get "onboarding", to: "home#onboarding"
+  get "dashboards/admin", to: "home#admin_dashboard", as: :admin_dashboard
+  get "dashboards/personnel", to: "home#personnel_dashboard", as: :personnel_dashboard
+  get "profile", to: "home#profile"
+  get "complaints", to: "home#complaints"
+  get "payroll", to: "home#payroll"
 end

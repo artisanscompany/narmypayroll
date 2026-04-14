@@ -1,0 +1,22 @@
+<% content_for :title, "Profile · NARMY Portal V1" %>
+
+<div class="page-stack">
+  <section class="panel">
+    <p class="kicker">Service record</p>
+    <h1 class="page-title">Profile and personnel record</h1>
+    <p class="page-intro" style="color: var(--muted);">
+      The prototype uses this area for service data review, sensitive record access, and PIN-protected document controls.
+    </p>
+  </section>
+
+  <section class="panel">
+    <ul class="detail-list">
+      <% @profile_sections.each do |item| %>
+        <li>
+          <strong><%= item[:label] %></strong>
+          <span class="muted"><%= item[:value] %></span>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</div>

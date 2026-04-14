@@ -1,0 +1,46 @@
+<% content_for :title, "Login · NARMY Portal V1" %>
+
+<div class="page-stack">
+  <section class="panel">
+    <p class="kicker">Secure access surface</p>
+    <h1 class="page-title">Army number sign-in</h1>
+    <p class="page-intro" style="color: var(--muted);">
+      This is the Rails implementation of the prototype's login screen. Authentication is not wired yet, but the page structure,
+      account types, and routing targets are ready for the next application layer.
+    </p>
+  </section>
+
+  <section class="two-column">
+    <article class="panel">
+      <div class="form-preview">
+        <div class="field">
+          <label>Army Number</label>
+          <input type="text" value="NA/23/01234" readonly>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" value="demo1234" readonly>
+        </div>
+        <p class="note">Credentials are placeholders only in this scaffold. Production auth can be connected to whatever Army credential source is approved later.</p>
+        <div class="button-row">
+          <%= link_to "Continue to onboarding", onboarding_path, class: "button button--primary" %>
+          <%= link_to "Open personnel dashboard", personnel_dashboard_path, class: "button button--ghost" %>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel">
+      <p class="kicker">Prototype account map</p>
+      <ul class="timeline">
+        <% @demo_accounts.each do |account| %>
+          <li>
+            <div>
+              <strong><%= "#{account[:rank]} #{account[:name]}" %></strong>
+              <span class="muted"><%= "#{account[:role]} · #{account[:army_number]}" %></span>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </article>
+  </section>
+</div>

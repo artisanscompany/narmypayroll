@@ -1,0 +1,45 @@
+<% content_for :title, "Onboarding · NARMY Portal V1" %>
+
+<div class="page-stack">
+  <section class="panel">
+    <p class="kicker">First-time activation</p>
+    <h1 class="page-title">Onboarding and setup</h1>
+    <p class="page-intro" style="color: var(--muted);">
+      This page mirrors the prototype's first-login flow: temporary credentials, password creation, and document PIN setup before
+      the user enters the self-service portal.
+    </p>
+  </section>
+
+  <section class="two-column">
+    <article class="panel">
+      <ul class="timeline">
+        <% @onboarding_steps.each_with_index do |step, index| %>
+          <li>
+            <div>
+              <strong>Step <%= index + 1 %></strong>
+              <span class="muted"><%= step %></span>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </article>
+
+    <article class="panel">
+      <div class="form-preview">
+        <div class="field">
+          <label>Temporary password</label>
+          <input type="password" value="demo1234" readonly>
+        </div>
+        <div class="field">
+          <label>New password</label>
+          <input type="password" placeholder="Create a strong password" readonly>
+        </div>
+        <div class="field">
+          <label>Document PIN</label>
+          <input type="text" placeholder="4 digits" readonly>
+        </div>
+        <p class="note">The final version can write onboarding state to PostgreSQL and use Redis-backed cache/session helpers without changing the deployment shape.</p>
+      </div>
+    </article>
+  </section>
+</div>

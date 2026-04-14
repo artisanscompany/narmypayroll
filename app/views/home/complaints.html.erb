@@ -1,0 +1,57 @@
+<% content_for :title, "Complaints · NARMY Portal V1" %>
+
+<div class="page-stack">
+  <section class="panel">
+    <p class="kicker">Inquiry workflow</p>
+    <h1 class="page-title">Complaints and ticket tracking</h1>
+    <p class="page-intro" style="color: var(--muted);">
+      A deployable placeholder for the complaint filing and SLA workflow in the prototype.
+    </p>
+  </section>
+
+  <section class="two-column">
+    <article class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Issue</th>
+            <th>Status</th>
+            <th>SLA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @complaint_rows.each do |row| %>
+            <tr>
+              <td><%= row[:id] %></td>
+              <td>
+                <strong><%= row[:title] %></strong><br>
+                <span class="muted"><%= "#{row[:filed_on]} · #{row[:owner]}" %></span>
+              </td>
+              <td><span class="<%= status_pill_class(row[:status]) %>"><%= row[:status] %></span></td>
+              <td><%= row[:sla] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </article>
+
+    <article class="panel">
+      <div class="form-preview">
+        <div class="field">
+          <label>Category</label>
+          <input type="text" value="Payroll discrepancy" readonly>
+        </div>
+        <div class="field">
+          <label>Subject</label>
+          <input type="text" value="Housing allowance variance" readonly>
+        </div>
+        <div class="field">
+          <label>Details</label>
+          <textarea readonly>I need a review of the housing allowance shown on the latest payslip.</textarea>
+        </div>
+        <p class="note">This static form preserves the filing flow while backend models and workflow rules are still being built.</p>
+      </div>
+    </article>
+  </section>
+</div>

@@ -1,23 +1,46 @@
-# NARMY Portal v1
+# NARMY Portal V1
 
-Rails 8 application for the NARMY portal rollout.
+Deployable Rails 8 scaffold for the NARMY personnel and payroll portal.
 
-## Runtime configuration
+## Runtime
 
-- `DATABASE_URL`: PostgreSQL connection string
-- `REDIS_URL`: Redis connection string
-- `SECRET_KEY_BASE`: Rails secret key base for production
-- `APP_HOST`: public hostname, defaults to `narmyapp.gitgar.com`
-- `RAILS_LOG_LEVEL`: optional, defaults to `info`
+- Ruby `4.0.1`
+- Rails `8.1.x`
+- PostgreSQL via `DATABASE_URL`
+- Redis via `REDIS_URL`
+- Docker build ready for Coolify
 
 ## Local setup
 
-```sh
+```bash
 bundle install
-bin/rails db:prepare
 bin/rails server
 ```
 
-## Production
+If Redis is not available locally the portal still renders; it will simply show Redis as unavailable in the runtime status panel.
 
-The app is designed to run behind Coolify using the included `Dockerfile`.
+## Production env
+
+Copy `.env.example` into your deployment environment and set:
+
+- `APP_HOST`
+- `DATABASE_URL`
+- `REDIS_URL`
+- `SECRET_KEY_BASE`
+
+## Pages included
+
+- Overview
+- Login
+- Onboarding
+- Admin dashboard
+- Personnel dashboard
+- Profile
+- Complaints
+- Payroll
+
+## Verification
+
+```bash
+bundle exec rails test
+```

@@ -23,7 +23,32 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="portal-body">
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header__brand">
+          <%= link_to root_path, class: "brand-mark" do %>
+            <span class="brand-mark__crest">NA</span>
+            <span class="brand-mark__copy">
+              <strong>NARMY Portal V1</strong>
+              <small>Rails production scaffold</small>
+            </span>
+          <% end %>
+        </div>
+        <nav class="site-nav" aria-label="Primary">
+          <% portal_navigation.each do |label, path| %>
+            <%= portal_nav_link(label, path) %>
+          <% end %>
+        </nav>
+      </header>
+
+      <main class="site-main">
+        <%= yield %>
+      </main>
+
+      <footer class="site-footer">
+        <p>Designed for the NARMY personnel and payroll portal rollout. Production runtime expects <code>DATABASE_URL</code>, <code>REDIS_URL</code>, and <code>APP_HOST</code>.</p>
+      </footer>
+    </div>
   </body>
 </html>

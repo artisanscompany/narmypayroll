@@ -65,7 +65,6 @@ Rails.application.configure do
   app_host = ENV.fetch("APP_HOST", "narmyapp.gitgar.com")
   config.action_controller.default_url_options = { host: app_host, protocol: "https" }
   config.action_mailer.default_url_options = { host: app_host, protocol: "https" }
-  config.hosts << app_host if app_host.present?
 
   if ENV["REDIS_URL"].present?
     config.action_cable.allowed_request_origins = [

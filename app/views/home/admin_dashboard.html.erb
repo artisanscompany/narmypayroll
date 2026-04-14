@@ -1,0 +1,47 @@
+<% content_for :title, "Admin Dashboard · NARMY Portal V1" %>
+
+<div class="page-stack">
+  <section class="panel">
+    <p class="kicker">Admin operations</p>
+    <h1 class="page-title">Division and headquarters cockpit</h1>
+    <p class="page-intro" style="color: var(--muted);">
+      A minimal Rails version of the prototype's admin dashboard: KPIs, ticket oversight, service health, and payroll control surfaces.
+    </p>
+  </section>
+
+  <section class="metric-grid">
+    <% @admin_metrics.each do |metric| %>
+      <article class="metric-card">
+        <small><%= metric[:label] %></small>
+        <strong><%= metric[:value] %></strong>
+        <span><%= metric[:trend] %></span>
+      </article>
+    <% end %>
+  </section>
+
+  <section class="two-column">
+    <article class="panel">
+      <p class="kicker">Operational status</p>
+      <ul class="timeline">
+        <% @service_statuses.each do |service| %>
+          <li>
+            <div>
+              <strong><%= service.label %></strong>
+              <span class="muted"><%= service.detail %></span>
+            </div>
+            <span class="<%= status_pill_class(service.state) %>"><%= service.state %></span>
+          </li>
+        <% end %>
+      </ul>
+    </article>
+
+    <article class="panel">
+      <p class="kicker">Command tasks</p>
+      <ul class="bullet-list">
+        <li><div><strong>Ticket triage</strong><span class="muted">Prioritise complaints by SLA risk, division, and ownership.</span></div></li>
+        <li><div><strong>Payroll review</strong><span class="muted">Validate uploads, diffs, and release readiness before monthly processing.</span></div></li>
+        <li><div><strong>User governance</strong><span class="muted">Apply RBAC changes and audit division-level access.</span></div></li>
+      </ul>
+    </article>
+  </section>
+</div>
