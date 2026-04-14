@@ -25,6 +25,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Use Redis for cache and realtime features in production
 gem "redis", "~> 5.0"
+gem "aws-sdk-s3", "~> 1.170", require: false
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
