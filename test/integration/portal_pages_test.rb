@@ -2,11 +2,11 @@ require "test_helper"
 
 class PortalPagesTest < ActionDispatch::IntegrationTest
   test "core portal pages render" do
-    host! "localhost"
+    host! "payroll.narmy.gitgar.com"
 
     get root_path
     assert_response :success
-    assert_includes @response.body, "NARMY Portal V1"
+    assert_includes @response.body, "Army Finance Payroll"
 
     get login_path
     assert_response :success

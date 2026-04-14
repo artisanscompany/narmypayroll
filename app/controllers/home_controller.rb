@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   ServiceStatus = Struct.new(:label, :state, :detail, keyword_init: true)
+  layout "payroll"
   before_action :set_portal_content
 
   def index
@@ -13,8 +14,8 @@ class HomeController < ApplicationController
     @demo_accounts = [
       { rank: "Capt.", name: "Adeyemi", role: "Personnel", army_number: "NA/23/01234" },
       { rank: "Pvt.", name: "Musa", role: "First login", army_number: "NA/15/05678" },
-      { rank: "Maj.", name: "Okonkwo", role: "Division Admin", army_number: "DA/10/00456" },
-      { rank: "Col.", name: "Nwachukwu", role: "Super Admin", army_number: "SA/05/00123" }
+      { rank: "Maj.", name: "Okonkwo", role: "Payroll operations", army_number: "DA/10/00456" },
+      { rank: "Col.", name: "Nwachukwu", role: "Programme owner", army_number: "SA/05/00123" }
     ]
   end
 
@@ -44,13 +45,13 @@ class HomeController < ApplicationController
 
   def set_portal_content
     @readiness_metrics = [
-      { value: "277k+", label: "Personnel and staff accounts" },
-      { value: "30k", label: "Peak concurrent sessions" },
-      { value: "<200ms", label: "Target p95 response" }
+      { value: "277k+", label: "Personnel and payroll records in scope" },
+      { value: "30k", label: "Peak concurrent access target" },
+      { value: "<200ms", label: "Target p95 document lookup" }
     ]
     @platform_modules = [
       "Payslip management",
-      "Complaint handling",
+      "Inquiry handling",
       "Personnel records",
       "Admin analytics",
       "Role-based access",
@@ -61,21 +62,21 @@ class HomeController < ApplicationController
     @delivery_track = [
       {
         title: "Infrastructure online",
-        detail: "Coolify deploy target, PostgreSQL service, Redis service, TLS, and custom domain are prepared for the first production release."
+        detail: "Coolify deploy target, PostgreSQL, Redis, MinIO-backed Active Storage, TLS, and hardened servers are prepared for live rollout."
       },
       {
-        title: "Portal scaffold",
-        detail: "This Rails app mirrors the prototype's key surfaces so product work can move from static mockups into deployable pages."
+        title: "Prototype translated to Rails",
+        detail: "This Rails surface now mirrors the approved prototype patterns closely enough for stakeholder review on a real runtime."
       },
       {
         title: "Operational integration",
-        detail: "The runtime is wired for DATABASE_URL, REDIS_URL, HTTPS mailer hosts, and stateless cache usage in production."
+        detail: "The runtime is wired for PostgreSQL, Redis, HTTPS host routing, stateless cache usage, and Active Storage object delivery."
       }
     ]
     @admin_metrics = [
-      { label: "Open tickets", value: "184", trend: "+12%" },
+      { label: "Open inquiries", value: "184", trend: "+12%" },
       { label: "Monthly payroll run", value: "277k", trend: "Ready" },
-      { label: "SLA compliance", value: "96.4%", trend: "+1.8%" },
+      { label: "Document fulfilment", value: "96.4%", trend: "+1.8%" },
       { label: "Divisions covered", value: "6", trend: "Nationwide" }
     ]
     @personnel_metrics = [
@@ -85,14 +86,14 @@ class HomeController < ApplicationController
       { label: "Service years", value: "14y 3m", note: "Signals Corps" }
     ]
     @support_channels = [
-      { label: "Division pay office", detail: "For onboarding and payroll disputes" },
-      { label: "Personnel help desk", detail: "For profile and document issues" },
-      { label: "Admin operations team", detail: "For tickets, RBAC, and data uploads" }
+      { label: "Division pay office", detail: "For onboarding, corrections, and payroll disputes" },
+      { label: "Personnel help desk", detail: "For profile, login, and document issues" },
+      { label: "Army delivery desk", detail: "For prototype review, rollout planning, and admin escalations" }
     ]
     @complaint_rows = [
-      { id: "CMP-2401", title: "Housing allowance variance", status: "under review", filed_on: "11 Apr 2026", sla: "2d left", owner: "Division 1" },
-      { id: "CMP-2387", title: "Missing tax certificate", status: "resolved", filed_on: "7 Apr 2026", sla: "closed", owner: "HQ Payroll" },
-      { id: "CMP-2354", title: "Corps assignment mismatch", status: "new", filed_on: "4 Apr 2026", sla: "4d left", owner: "Records Unit" }
+      { id: "INQ-2401", title: "Housing allowance variance", status: "under review", filed_on: "11 Apr 2026", sla: "2d left", owner: "Division 1" },
+      { id: "INQ-2387", title: "Missing tax certificate", status: "resolved", filed_on: "7 Apr 2026", sla: "closed", owner: "HQ Payroll" },
+      { id: "INQ-2354", title: "Corps assignment mismatch", status: "new", filed_on: "4 Apr 2026", sla: "4d left", owner: "Records Unit" }
     ]
     @payroll_breakdown = [
       { label: "Basic salary", amount: "NGN 280,000" },

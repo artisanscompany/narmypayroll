@@ -1,6 +1,6 @@
-# NARMY Portal V1
+# Army Finance Payroll Prototype
 
-Deployable Rails 8 scaffold for the NARMY personnel and payroll portal.
+Deployable Rails 8 prototype for the payroll application that will serve `payroll.narmy.gitgar.com`.
 
 ## Runtime
 
@@ -26,6 +26,8 @@ Active Storage is configured for production object storage through MinIO; local 
 Copy `.env.example` into your deployment environment and set:
 
 - `APP_HOST`
+- `PAYROLL_HOST`
+- `WEBSITE_HOST`
 - `DATABASE_URL`
 - `REDIS_URL`
 - `ACTIVE_STORAGE_SERVICE`
@@ -35,16 +37,18 @@ Copy `.env.example` into your deployment environment and set:
 - `ACTIVE_STORAGE_SECRET_ACCESS_KEY`
 - `SECRET_KEY_BASE`
 
+`APP_HOST` and `PAYROLL_HOST` should point to the payroll application host. `WEBSITE_HOST` is used for cross-links to the separate marketing site.
+
 ## Pages included
 
 - Overview
-- Login
+- Secure access
 - Onboarding
-- Admin dashboard
+- Admin console
 - Personnel dashboard
 - Profile
-- Complaints
-- Payroll
+- Inquiries
+- Pay and documents
 
 ## Verification
 

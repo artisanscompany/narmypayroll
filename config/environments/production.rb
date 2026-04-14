@@ -63,16 +63,19 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Set host to be used by links generated in mailer templates.
-  app_host = ENV.fetch("APP_HOST", "narmyapp.gitgar.com")
-  config.action_controller.default_url_options = { host: app_host, protocol: "https" }
-  config.action_mailer.default_url_options = { host: app_host, protocol: "https" }
+  payroll_host = ENV.fetch("PAYROLL_HOST", ENV.fetch("APP_HOST", "payroll.narmy.gitgar.com"))
+  legacy_host = ENV.fetch("LEGACY_APP_HOST", "narmyapp.gitgar.com")
+  config.action_controller.default_url_options = { host: payroll_host, protocol: "https" }
+  config.action_mailer.default_url_options = { host: payroll_host, protocol: "https" }
 
   if ENV["REDIS_URL"].present?
     config.action_cable.allowed_request_origins = [
-      "https://#{app_host}",
-      "http://#{app_host}"
+      "https://#{payroll_host}",
+      "http://#{payroll_host}",
+      "https://#{legacy_host}",
+      "http://#{legacy_host}"
     ]
-    config.action_cable.url = ENV.fetch("ACTION_CABLE_URL", "wss://#{app_host}/cable")
+    config.action_cable.url = ENV.fetch("ACTION_CABLE_URL", "wss://#{payroll_host}/cable")
   end
 
   # Specify outgoing SMTP server. Remember to add smtp/* credentials via bin/rails credentials:edit.
@@ -96,7 +99,8 @@ Rails.application.configure do
 
   # Allow the public host and Coolify's local health checks.
   config.hosts = [
-    app_host,
+    payroll_host,
+    legacy_host,
     "localhost",
     "127.0.0.1"
   ]

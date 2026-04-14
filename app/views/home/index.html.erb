@@ -1,17 +1,17 @@
-<% content_for :title, "NARMY Portal V1" %>
+<% content_for :title, "Overview · Army Finance Payroll" %>
 
 <div class="page-stack">
   <section class="hero">
     <div class="hero-copy hero-panel">
-      <p class="eyebrow">Integrated Personnel &amp; Payroll Portal</p>
-      <h1>NARMY<br>Portal V1</h1>
+      <p class="eyebrow">Payroll Prototype</p>
+      <h1>Army Finance<br>Payroll Command</h1>
       <p>
-        The first deployable Rails surface for the Nigerian Army personnel and payroll platform. It carries the prototype's
-        major user journeys into a real application runtime backed by PostgreSQL and Redis through Coolify.
+        A deployable Rails prototype for personnel self-service, payroll records, and secure document delivery. It carries the
+        approved prototype's major journeys into a live runtime backed by PostgreSQL, Redis, and Active Storage.
       </p>
       <div class="button-row">
         <%= link_to "Open login surface", login_path, class: "button button--primary" %>
-        <%= link_to "Review admin cockpit", admin_dashboard_path, class: "button button--secondary" %>
+        <%= link_to "Review pay documents", payroll_path, class: "button button--secondary" %>
       </div>
     </div>
 
@@ -30,8 +30,8 @@
       </ul>
       <div class="highlight-callout">
         <p class="note">
-          Production expects the app to run behind <strong><%= ENV.fetch("APP_HOST", "narmyapp.gitgar.com") %></strong> with the
-          existing managed Postgres and Redis services attached through environment variables.
+          Production expects the app to run behind <strong><%= payroll_host %></strong> with managed PostgreSQL, Redis,
+          and object storage services attached through runtime environment variables.
         </p>
       </div>
     </aside>
@@ -39,7 +39,7 @@
 
   <section class="panel">
     <p class="kicker">Platform scope</p>
-    <h2 class="page-title">Core modules carried over from the prototype</h2>
+    <h2 class="page-title">Core modules carried over from the approved prototype</h2>
     <ul class="module-list">
       <% @platform_modules.each do |module_name| %>
         <li><%= module_name %></li>
@@ -68,14 +68,14 @@
         <li>
           <div>
             <strong>Login and onboarding</strong>
-            <span class="muted">Army number access and first-time setup pages are in place for the authentication buildout.</span>
+            <span class="muted">Army number access, first-time setup, and PIN-led document controls follow the interaction model from the prototype.</span>
           </div>
           <%= link_to "Open", login_path, class: "button button--ghost" %>
         </li>
         <li>
           <div>
             <strong>Personnel self-service</strong>
-            <span class="muted">Payslip, complaint, and profile placeholders reflect the prototype's information architecture.</span>
+            <span class="muted">Payslip, inquiry, and profile placeholders reflect the prototype's information architecture.</span>
           </div>
           <%= link_to "Open", personnel_dashboard_path, class: "button button--ghost" %>
         </li>

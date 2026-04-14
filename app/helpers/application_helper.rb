@@ -1,14 +1,30 @@
 module ApplicationHelper
+  def payroll_host
+    ENV.fetch("PAYROLL_HOST", ENV.fetch("APP_HOST", "payroll.narmy.gitgar.com"))
+  end
+
+  def website_host
+    ENV.fetch("WEBSITE_HOST", "website.narmy.gitgar.com")
+  end
+
+  def payroll_base_url(path = "/")
+    "https://#{payroll_host}#{path}"
+  end
+
+  def website_base_url(path = "/")
+    "https://#{website_host}#{path}"
+  end
+
   def portal_navigation
     [
       [ "Overview", root_path ],
-      [ "Login", login_path ],
+      [ "Secure Access", login_path ],
       [ "Onboarding", onboarding_path ],
-      [ "Admin", admin_dashboard_path ],
-      [ "Personnel", personnel_dashboard_path ],
+      [ "Admin Console", admin_dashboard_path ],
+      [ "Personnel Home", personnel_dashboard_path ],
       [ "Profile", profile_path ],
-      [ "Complaints", complaints_path ],
-      [ "Payroll", payroll_path ]
+      [ "Inquiries", complaints_path ],
+      [ "Pay & Docs", payroll_path ]
     ]
   end
 

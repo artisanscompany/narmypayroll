@@ -1,11 +1,11 @@
-<% content_for :title, "Payroll · NARMY Portal V1" %>
+<% content_for :title, "Pay & Documents · Army Finance Payroll" %>
 
 <div class="page-stack">
   <section class="panel">
     <p class="kicker">Monthly pay</p>
-    <h1 class="page-title">Payroll and payslip surface</h1>
+    <h1 class="page-title">Pay and document surface</h1>
     <p class="page-intro" style="color: var(--muted);">
-      This page carries the prototype's payslip and payroll summary structure into Rails so it can be backed by live records later.
+      This page carries the prototype's payslip, deduction summary, and document workflow into Rails so it can be backed by live records later.
     </p>
   </section>
 
@@ -27,7 +27,7 @@
       <ul class="bullet-list">
         <li><div><strong>Download payslip</strong><span class="muted">Generate a signed monthly payslip PDF for secure download.</span></div></li>
         <li><div><strong>Tax certificate</strong><span class="muted">Issue annual tax documentation once payroll history is wired.</span></div></li>
-        <li><div><strong>Diff review</strong><span class="muted">Compare current and previous months for allowances and deductions.</span></div></li>
+        <li><div><strong>Protected documents</strong><span class="muted">Serve sensitive files through Active Storage with the data node as the storage backend.</span></div></li>
       </ul>
     </article>
   </section>
