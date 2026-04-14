@@ -1,10 +1,10 @@
 module ApplicationHelper
   def payroll_host
-    ENV.fetch("PAYROLL_HOST", ENV.fetch("APP_HOST", "payroll.narmy.gitgar.com"))
+    ENV.fetch("PAYROLL_HOST", ENV.fetch("APP_HOST", "narmypayroll.gitgar.com"))
   end
 
   def website_host
-    ENV.fetch("WEBSITE_HOST", "website.narmy.gitgar.com")
+    ENV.fetch("WEBSITE_HOST", "narmysite.gitgar.com")
   end
 
   def payroll_base_url(path = "/")

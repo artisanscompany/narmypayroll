@@ -63,7 +63,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Set host to be used by links generated in mailer templates.
-  payroll_host = ENV.fetch("PAYROLL_HOST", ENV.fetch("APP_HOST", "payroll.narmy.gitgar.com"))
+  payroll_host = ENV.fetch("PAYROLL_HOST", ENV.fetch("APP_HOST", "narmypayroll.gitgar.com"))
   legacy_host = ENV.fetch("LEGACY_APP_HOST", "narmyapp.gitgar.com")
   config.action_controller.default_url_options = { host: payroll_host, protocol: "https" }
   config.action_mailer.default_url_options = { host: payroll_host, protocol: "https" }

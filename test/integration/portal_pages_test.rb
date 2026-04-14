@@ -2,7 +2,7 @@ require "test_helper"
 
 class PortalPagesTest < ActionDispatch::IntegrationTest
   test "core portal pages render" do
-    host! "payroll.narmy.gitgar.com"
+    host! "narmypayroll.gitgar.com"
 
     get root_path
     assert_response :success

@@ -2,7 +2,7 @@ require "test_helper"
 
 class HomeControllerTest < ActionDispatch::IntegrationTest
   test "renders the portal landing page" do
-    host! "payroll.narmy.gitgar.com"
+    host! "narmypayroll.gitgar.com"
     get "/"
 
     assert_response :success
