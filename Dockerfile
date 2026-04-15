@@ -9,6 +9,9 @@
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version
 ARG RUBY_VERSION=4.0.1
+ARG NODE_VERSION=22.14.0
+FROM docker.io/library/node:${NODE_VERSION}-slim AS node
+
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
 # Rails app lives here
@@ -30,6 +33,9 @@ ENV RAILS_ENV="production" \
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
+# Copy Node.js from the official image so Vite assets can be built during image creation.
+COPY --from=node /usr/local/ /usr/local/
+
 # Install packages needed to build gems
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libvips libyaml-dev pkg-config && \
@@ -43,6 +49,10 @@ RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     # -j 1 disable parallel compilation to avoid a QEMU bug: https://github.com/rails/bootsnap/issues/495
     bundle exec bootsnap precompile -j 1 --gemfile
+
+# Install JavaScript dependencies separately for better layer caching.
+COPY package.json package-lock.json ./
+RUN npm ci
 
 # Copy application code
 COPY . .

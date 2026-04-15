@@ -9,12 +9,11 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-  root "home#index"
-  get "login", to: "home#login"
-  get "onboarding", to: "home#onboarding"
-  get "dashboards/admin", to: "home#admin_dashboard", as: :admin_dashboard
-  get "dashboards/personnel", to: "home#personnel_dashboard", as: :personnel_dashboard
-  get "profile", to: "home#profile"
-  get "complaints", to: "home#complaints"
-  get "payroll", to: "home#payroll"
+  root "frontend#index"
+  get "*path", to: "frontend#index", constraints: lambda { |request|
+    request.format.html? &&
+      !request.path.start_with?("/rails/") &&
+      !request.path.start_with?("/assets/") &&
+      !request.path.start_with?("/vite/")
+  }
 end

@@ -4,29 +4,10 @@ class PortalPagesTest < ActionDispatch::IntegrationTest
   test "core portal pages render" do
     host! "narmypayroll.gitgar.com"
 
-    get root_path
-    assert_response :success
-    assert_includes @response.body, "Army Finance Payroll"
-
-    get login_path
-    assert_response :success
-
-    get onboarding_path
-    assert_response :success
-
-    get admin_dashboard_path
-    assert_response :success
-
-    get personnel_dashboard_path
-    assert_response :success
-
-    get profile_path
-    assert_response :success
-
-    get complaints_path
-    assert_response :success
-
-    get payroll_path
-    assert_response :success
+    ["/", "/login", "/onboard", "/setup", "/dashboard", "/help", "/pay", "/complaints", "/admin/dashboard", "/admin/payroll/upload"].each do |path|
+      get path
+      assert_response :success, "expected #{path} to render successfully"
+      assert_includes response.body, '<div id="app"></div>'
+    end
   end
 end
