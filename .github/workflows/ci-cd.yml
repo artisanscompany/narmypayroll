@@ -38,6 +38,12 @@ jobs:
         with:
           bundler-cache: true
 
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Build test frontend assets
+        run: bin/vite build --clear --mode=test
+
       - name: Prepare test database
         run: bundle exec rails db:prepare
 
